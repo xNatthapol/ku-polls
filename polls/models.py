@@ -10,6 +10,10 @@ class Question(models.Model):
 
     def is_published(self):
         return self.pub_date <= timezone.localtime(timezone.now())
+    
+    def can_vote(self):
+        return self.pub_date <= timezone.localtime(timezone.now()) \
+            and ((self.end_date >= timezone.localtime(timezone.now())) or (self.end_date is None))
 
     def was_published_recently(self):
         now = timezone.now()
