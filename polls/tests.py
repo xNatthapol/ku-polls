@@ -83,13 +83,13 @@ class QuestionModelTests(TestCase):
         no_end_date = Question(end_date=None)
         self.assertIs(no_end_date.can_vote(), True)
 
-    def test_can_vote_if_end_date_is_now(self):
+    def test_cannot_vote_if_end_date_is_now(self):
         """
-        can_vote() should return True if the question has an end_date that is now.
+        can_vote() should return False if the question has an end_date that is now.
         """
         time = timezone.now()
         end_date_is_now = Question(end_date=time)
-        self.assertIs(end_date_is_now.can_vote(), True)
+        self.assertIs(end_date_is_now.can_vote(), False)
 
 def create_question(question_text, days):
     """
@@ -162,12 +162,12 @@ class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
         """
         The detail view of a question with a pub_date in the future
-        returns a 404 not found.
+        returns 302.
         """
         future_question = create_question(question_text="Future question.", days=5)
         url = reverse("polls:detail", args=(future_question.id,))
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 302)
 
     def test_past_question(self):
         """
