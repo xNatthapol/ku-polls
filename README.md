@@ -1,4 +1,5 @@
 ## KU Polls: Online Survey Questions 
+[![Unittest](https://github.com/xNatthapol/ku-polls/actions/workflows/python-app.yml/badge.svg)](https://github.com/xNatthapol/ku-polls/actions/workflows/python-app.yml)
 
 An application to conduct online polls and surveys based
 on the [Django Tutorial project][django-tutorial], with
