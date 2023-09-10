@@ -36,6 +36,30 @@ class QuestionModelTests(TestCase):
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
 
+    def test_future_pub_date(self):
+        """
+        is_published() should return False if the question has a future pub_date.
+        """
+        time = timezone.now() + datetime.timedelta(days=30)
+        future_pub_date = Question(pub_date=time)
+        self.assertIs(future_pub_date.is_published(), False)
+
+    def test_default_pub_date(self):
+        """
+        is_published() should return True if the question has a default pub_date (now).
+        """
+        time = timezone.now()
+        default_pub_date = Question(pub_date=time)
+        self.assertIs(default_pub_date.is_published(), True)
+
+    def test_past_pub_date(self):
+        """
+        is_published() should return True if the question has a past pub_date.
+        """
+        time = timezone.now() - datetime.timedelta(days=30)
+        past_pub_date = Question(pub_date=time)
+        self.assertIs(past_pub_date.is_published(), True)
+
 def create_question(question_text, days):
     """
     Create a question with the given `question_text` and published the
