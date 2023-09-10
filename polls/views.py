@@ -40,6 +40,7 @@ class DetailView(generic.DetailView):
         except Question.DoesNotExist:
             messages.error(request, "This question does not exist.")
             return redirect("polls:index")
+        return render(request, self.template_name, {"question": question})
 
 
 class ResultsView(generic.DetailView):
@@ -56,6 +57,7 @@ class ResultsView(generic.DetailView):
         except Question.DoesNotExist:
             messages.error(request, "This question does not exist.")
             return redirect("polls:index")
+        return render(request, self.template_name, {"question": question})
         
 
 def vote(request, question_id):
