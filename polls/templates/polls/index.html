@@ -4,9 +4,20 @@
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        <li>
+            <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+            <a href="{% url 'polls:results' question.id %}">Results</a>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No polls are available.</p>
+{% endif %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
 {% endif %}
