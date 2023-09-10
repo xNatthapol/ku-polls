@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib import messages
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
@@ -28,11 +29,34 @@ class DetailView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            question = get_object_or_404(Question, pk=kwargs["pk"])
+
+            if not question.can_vote():
+                messages.error(request, "This page doesn't allow voting.")
+                return redirect("polls:index")
+        except Question.DoesNotExist:
+            messages.error(request, "This question does not exist.")
+            return redirect("polls:index")
 
 
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
+
+    def get(self, request, *args, **kwargs):
+        try:
+            question = get_object_or_404(Question, pk=kwargs["pk"])
+
+            if not question.can_vote():
+                messages.error(request, "This page doesn't allow voting.")
+                return redirect("polls:index")
+        except Question.DoesNotExist:
+            messages.error(request, "This question does not exist.")
+            return redirect("polls:index")
+        
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
