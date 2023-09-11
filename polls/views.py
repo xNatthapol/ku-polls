@@ -63,15 +63,7 @@ class ResultsView(generic.DetailView):
         """
         Returns the results page for a question.
         """
-        try:
-            question = get_object_or_404(Question, pk=kwargs["pk"])
-
-            if not question.can_vote():
-                messages.error(request, "This page doesn't allow voting.")
-                return redirect("polls:index")
-        except Http404:
-            messages.error(request, "This question does not exist.")
-            return redirect("polls:index")
+        question = get_object_or_404(Question, pk=kwargs["pk"])
         return render(request, self.template_name, {"question": question})
         
 
