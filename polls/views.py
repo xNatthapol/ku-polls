@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.urls import reverse
@@ -46,7 +46,7 @@ class DetailView(generic.DetailView):
             if not question.can_vote():
                 messages.error(request, "This page doesn't allow voting.")
                 return redirect("polls:index")
-        except Question.DoesNotExist:
+        except Http404:
             messages.error(request, "This question does not exist.")
             return redirect("polls:index")
         return render(request, self.template_name, {"question": question})
@@ -69,7 +69,7 @@ class ResultsView(generic.DetailView):
             if not question.can_vote():
                 messages.error(request, "This page doesn't allow voting.")
                 return redirect("polls:index")
-        except Question.DoesNotExist:
+        except Http404:
             messages.error(request, "This question does not exist.")
             return redirect("polls:index")
         return render(request, self.template_name, {"question": question})
