@@ -1,4 +1,5 @@
 from django.http import HttpResponseRedirect, Http404
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.urls import reverse
@@ -67,11 +68,17 @@ class ResultsView(generic.DetailView):
         return render(request, self.template_name, {"question": question})
         
 
+@login_required
 def vote(request, question_id):
     """
     Handles voting for a particular choice in a question.
     """
     question = get_object_or_404(Question, pk=question_id)
+
+    if not question.can_vote():
+        messages.error(request, "This question page not allow voting.")
+        return redirect("polls:index")
+    
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
