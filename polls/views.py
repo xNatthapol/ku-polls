@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Choice, Question
+from .models import Choice, Question, Vote
 
 
 class IndexView(generic.ListView):
@@ -90,7 +90,21 @@ def vote(request, question_id):
                 "error_message": "You didn't select a choice.",
             },
         )
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+    
+    this_user = request.user
+    # selected_choice.votes += 1
+    # selected_choice.save()
+    try:
+        # find a vote by this user for this question
+        vote = Vote.objects.get(user=this_user, choice__question=question)
+        # update this vote
+        vote.choice = selected_choice
+    except Vote.DoesNotExist:
+        # no matching vote - create a new Vote
+        vote = Vote(user=this_user, choice=selected_choice)
+    
+    vote.save()
+    # TODO: Use messages to display a confirmation on the results page.
+    
+
+    return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
