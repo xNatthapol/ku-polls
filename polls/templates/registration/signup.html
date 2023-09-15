@@ -1,24 +1,11 @@
 {% extends "polls/base.html" %}
 
 {% block content %}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KU Polls</title>
-
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-    </head>
-    <body>
-        <h2>Register</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign Up</button>
-            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
-        </form>
-    </body>
-    </html>
+    <h2 class="head2">Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 {% endblock content%}
