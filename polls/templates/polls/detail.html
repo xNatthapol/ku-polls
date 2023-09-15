@@ -1,5 +1,7 @@
 {% extends "polls/base.html" %}
 
+{% block title %}<title>Poll Questions</title>{% endblock %}
+
 {% block content %}
     <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
