@@ -104,7 +104,7 @@ def vote(request, question_id):
         vote = Vote(user=this_user, choice=selected_choice)
     
     vote.save()
-    # TODO: Use messages to display a confirmation on the results page.
-    
 
+    messages.success(request, f"Your vote for {question.question_text} has been saved.")
+    
     return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
