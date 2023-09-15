@@ -50,7 +50,14 @@ class DetailView(generic.DetailView):
         except Http404:
             messages.error(request, "This question does not exist.")
             return redirect("polls:index")
-        return render(request, self.template_name, {"question": question})
+        
+        try:
+            vote = Vote.objects.get(user=request.user, choice__in=question.choice_set.all())
+            choice_voted = vote.choice.choice_text
+        except Vote.DoesNotExist:
+            choice_voted = None
+
+        return render(request, self.template_name, {"question": question, "choice_voted": choice_voted})
 
 
 class ResultsView(generic.DetailView):
