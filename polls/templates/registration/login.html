@@ -8,9 +8,9 @@
         {{ form.as_p }}
         </table>
         <p>
-        <button type="submit">Login</button>
+        <button class="button" type="submit">Login</button>
         </p>
         <input type="hidden" name="next" value="{{next}}"/>
     </form>
-    <p>Don't have an account yet? <a href="{% url 'signup' %}">Sign up</a></p>
+    <p>Don't have an account yet? <a class="button" href="{% url 'signup' %}">Sign up</a></p>
 {% endblock content %}
