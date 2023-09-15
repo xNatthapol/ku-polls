@@ -92,6 +92,11 @@ nav {
 }
 
 .text-p {
-    font-size: 15pt;
+    font-size: 17pt;
+    color: rgb(0, 0, 0);
+}
+
+.messages p {
+    font-size: 13pt;
     color: rgb(0, 0, 0);
 }

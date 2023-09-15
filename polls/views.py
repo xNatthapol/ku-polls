@@ -92,8 +92,7 @@ def vote(request, question_id):
         )
     
     this_user = request.user
-    # selected_choice.votes += 1
-    # selected_choice.save()
+    
     try:
         # find a vote by this user for this question
         vote = Vote.objects.get(user=this_user, choice__question=question)
