@@ -1,6 +1,97 @@
-li a {
-    color: green;
-}
 body {
-    background: white url("images/background.png") no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    padding: 1rem;
+    background-color: rgb(15, 15, 15);
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12%;
+}
+
+.logo a {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    width: 32%;
+}
+
+.menu li {
+    margin: 0 1rem;
+}
+
+.menu li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 14pt;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.content {
+    margin: 4ex;
+}
+
+.head2 {
+    color: rgb(0, 0, 0);
+}
+
+.question-block {
+    padding: 1rem;
+}
+
+.question-block li {
+    padding: 1.5rem;
+    list-style: none;
+}
+
+.question-block li a {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(225, 225, 225);
+    text-decoration: none;
+    font-size: 14pt;
+    color: rgb(0, 0, 0);
+    border-radius: 7px;
+    padding: 7px;
+    margin: 0 0.2rem;
+}
+
+.question-block li .button {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(30, 30, 30);
+    text-decoration: none;
+    font-size: 11pt;
+    color: rgb(255, 255, 255);
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.button {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(30, 30, 30);
+    text-decoration: none;
+    font-size: 11pt;
+    color: rgb(255, 255, 255);
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.text-p {
+    font-size: 15pt;
+    color: rgb(0, 0, 0);
 }
