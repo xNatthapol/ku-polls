@@ -5,16 +5,18 @@
 {% block content %}
     <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
-        <fieldset>
+        <fieldset class="question-box">
             <legend><h1>{{ question.question_text }}</h1></legend>
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
             {% for choice in question.choice_set.all %}
+            <div class="choice-box">
                 {% if choice.choice_text == choice_voted %}
                     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" checked>
                 {% else %}
                     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
                 {% endif %}
                 <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            </div>
             {% endfor %}
         </fieldset>
         <input class="button" type="submit" value="Vote">
