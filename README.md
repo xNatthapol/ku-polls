@@ -25,7 +25,7 @@ to be added.
 |  user001  |  nopassword001  |
 |  user002  |  nopassword002  |
 
-This is the user we generated as a demo. You can use this to log into KU Polls.
+This is the user we generated as a demo. You can use this to login to KU Polls.
 
 ## Project Documents
 
