@@ -51,11 +51,14 @@ class DetailView(generic.DetailView):
             messages.error(request, "This question does not exist.")
             return redirect("polls:index")
         
-        try:
-            vote = Vote.objects.get(user=request.user, choice__in=question.choice_set.all())
-            choice_voted = vote.choice.choice_text
-        except Vote.DoesNotExist:
-            choice_voted = None
+        choice_voted = None
+        
+        if request.user.is_authenticated:
+            try:
+                vote = Vote.objects.get(user=request.user, choice__in=question.choice_set.all())
+                choice_voted = vote.choice.choice_text
+            except Vote.DoesNotExist:
+                choice_voted = None
 
         return render(request, self.template_name, {"question": question, "choice_voted": choice_voted})
 
