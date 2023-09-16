@@ -18,6 +18,15 @@ Requires Python 3.8 and later.  Required Python packages are listed in [requirem
 
 to be added.
 
+## Demo users
+
+| Username  |    Password     |
+|:---------:|:---------------:|
+|  user001  |  nopassword001  |
+|  user002  |  nopassword002  |
+
+This is the user we generated as a demo. You can use this to log into KU Polls.
+
 ## Project Documents
 
 All project documents are in the [Project Wiki](../../wiki/Home).
