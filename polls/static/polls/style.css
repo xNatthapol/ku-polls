@@ -1,6 +1,162 @@
-li a {
-    color: green;
-}
 body {
-    background: white url("images/background.png") no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    padding: 1rem;
+    background-color: rgb(15, 15, 15);
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12%;
+}
+
+.logo a {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    width: 32%;
+}
+
+.menu li {
+    margin: 0 1rem;
+}
+
+.menu li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 14pt;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.content {
+    margin: 3ex;
+    margin-left: 4ex;
+}
+
+.sec-index {
+    margin-left: -4ex;
+}
+
+.sec-form {
+    margin-left: 1ex;
+}
+
+.sec-form .form-form {
+    font-size: 13pt;
+}
+
+.sec-form p {
+    font-size: 13pt;
+}
+
+.head2 {
+    color: rgb(0, 0, 0);
+}
+
+.question-box-list {
+    padding: 1rem;
+}
+
+.question-box-list li {
+    padding: 1.5rem;
+    list-style: none;
+}
+
+.question-box-list li a {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(225, 225, 225);
+    text-decoration: none;
+    font-size: 14pt;
+    color: rgb(0, 0, 0);
+    border-radius: 7px;
+    padding: 7px;
+    margin: 0 0.2rem;
+}
+
+.question-box-list li .button {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(30, 30, 30);
+    text-decoration: none;
+    font-size: 11pt;
+    color: rgb(255, 255, 255);
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.button {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(30, 30, 30);
+    text-decoration: none;
+    font-size: 11pt;
+    color: rgb(255, 255, 255);
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.text-p {
+    font-size: 17pt;
+    color: rgb(0, 0, 0);
+}
+
+.messages p {
+    font-size: 13pt;
+    color: rgb(0, 0, 0);
+}
+
+.question-box {
+    border: 2px solid rgb(0, 0, 0);
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.question-box legend {
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+}
+
+.question-box .choice-box {
+    padding: 7px;
+}
+
+.question-box .choice-box input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    margin-right: 7px;
+    accent-color: rgb(255, 70, 70);
+}
+
+.question-box label {
+    font-size: 14pt;
+    color: rgb(0, 0, 0);
+}
+
+.result-table {
+    border: 2px solid rgb(0, 0, 0);
+    padding: 7pt;
+    margin-bottom: 4ex;
+}
+
+.result-table thead th {
+    padding: 5px;
+    font-size: 14pt;
+}
+
+.result-table tbody td {
+    padding: 7px;
+    font-size: 13pt;   
 }

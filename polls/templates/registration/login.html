@@ -1,0 +1,20 @@
+{% extends "polls/base.html" %}
+
+{% block title %}<title>Login</title>{% endblock %}
+
+{% block content %}
+    <section class="sec-form">
+        <h2 class="head2">Login</h2>
+        <form method="post" class="form-form">
+            {% csrf_token %}
+            <table>
+            {{ form.as_p }}
+            </table>
+            <p>
+            <button class="button" type="submit">Login</button>
+            </p>
+            <input type="hidden" name="next" value="{{next}}"/>
+        </form>
+        <p>Don't have an account yet? <a class="button" href="{% url 'signup' %}">Sign up</a></p>
+    </section>
+{% endblock content %}
