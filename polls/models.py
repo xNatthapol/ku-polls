@@ -49,6 +49,11 @@ class Choice(models.Model):
         """Return the number count"""
         return self.vote_set.count()
 
+    @votes.setter
+    def votes(self, value):
+        """Set the number of votes"""
+        self._votes = value
+
     def __str__(self):
         return self.choice_text
 
