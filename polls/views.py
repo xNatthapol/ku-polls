@@ -92,14 +92,8 @@ def vote(request, question_id):
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
-        return render(
-            request,
-            "polls/detail.html",
-            {
-                "question": question,
-                "error_message": "You didn't select a choice.",
-            },
-        )
+        messages.error(request, "You didn't select a choice.")
+        return redirect("polls:detail", question_id)
     
     this_user = request.user
     
@@ -114,6 +108,7 @@ def vote(request, question_id):
     
     vote.save()
 
+    # Display a message that the user's vote was successful.
     messages.success(request, f"Your vote for {question.question_text} has been saved.")
     
     return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))

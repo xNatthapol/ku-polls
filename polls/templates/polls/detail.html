@@ -7,7 +7,13 @@
         {% csrf_token %}
         <fieldset class="question-box">
             <legend><h1>{{ question.question_text }}</h1></legend>
-            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <b><p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p></b>
+                {% endfor %}
+            </ul>
+            {% endif %}
             {% for choice in question.choice_set.all %}
             <div class="choice-box">
                 {% if choice.choice_text == choice_voted %}
