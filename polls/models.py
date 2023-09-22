@@ -24,7 +24,7 @@ class Question(models.Model):
         """
         return self.pub_date <= timezone.localtime(timezone.now()) \
             and ((self.end_date is None) or
-                 (self.end_date >= timezone.localtime(timezone.now())))
+                 (self.end_date > timezone.localtime(timezone.now())))
 
     def was_published_recently(self):
         """
