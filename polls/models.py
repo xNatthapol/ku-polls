@@ -17,13 +17,14 @@ class Question(models.Model):
         Returns True if the question is published.
         """
         return self.pub_date <= timezone.localtime(timezone.now())
-    
+
     def can_vote(self):
         """
         Returns True if the question can be voted on.
         """
         return self.pub_date <= timezone.localtime(timezone.now()) \
-            and ((self.end_date is None) or (self.end_date >= timezone.localtime(timezone.now())))
+            and ((self.end_date is None) or
+                 (self.end_date > timezone.localtime(timezone.now())))
 
     def was_published_recently(self):
         """
