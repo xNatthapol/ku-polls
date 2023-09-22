@@ -16,15 +16,23 @@ Requires Python 3.8 and later.  Required Python packages are listed in [requirem
 
 ## Install and Run
 
-to be added.
+### How to Install and Configure
 
-## Demo Admin
+You can install and configure the project by following the [Installation](Installation.md).
+
+
+
+## Demo Accounts
+
+### Demo Admin
 
 | Username  |    Password    |
 |:---------:|:--------------:|
 |   admin   |  istudyisp123  |
 
-## Demo User
+This is the admin we generated as a demo. You can use this to login to the admin page of KU Polls.
+
+### Demo User
 
 | Username  |    Password     |
 |:---------:|:---------------:|
