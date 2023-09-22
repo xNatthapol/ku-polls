@@ -20,7 +20,35 @@ Requires Python 3.8 and later.  Required Python packages are listed in [requirem
 
 You can install and configure the project by following the [Installation](Installation.md).
 
+### How to Run
 
+1. Activate the Virtual Environment
+- On MacOS or Linux
+    ```bash
+    source venv/bin/activate
+    ```
+- On Windows
+    ```cmd
+    venv\Scripts\activate
+    ```
+
+2. Start the Django Development Server
+    ```bash
+    python manage.py runserver
+    ```
+    If you receive an error message indicating that the port is unavailable, try running the server on a different port (1024 thru 65535), such as
+    ```bash
+    python manage.py runserver 12345
+    ```
+
+3. Navigate to http://localhost:8000 in your web browser.
+   
+4. To stop the server, press **Ctrl-C** / **control-C** in the terminal window.
+
+5. Exit the virtual environment by closing the window or typing
+    ```bash
+    deactivate
+    ```
 
 ## Demo Accounts
 
