@@ -19,6 +19,9 @@ def create_question(question_text, days):
 
 
 class QuestionIndexViewTests(TestCase):
+    """
+    Tests of the index view of questions.
+    """
     def test_no_questions(self):
         """
         If no questions exist, an appropriate message is displayed.
@@ -75,9 +78,17 @@ class QuestionIndexViewTests(TestCase):
             [question2, question1],
         )
 
+
 class QuestionDetailViewTests(TestCase):
+    """
+    Tests of the detail view of a question.
+    """
     def setUp(self):
-        # superclass setUp creates a Client object and initializes test database
+        """
+        Create a test user for authentication.
+        """
+        # superclass setUp creates a Client object and
+        # initializes test database
         super().setUp()
         self.username = "testuser111"
         self.password = "testpassword111"
@@ -86,13 +97,14 @@ class QuestionDetailViewTests(TestCase):
                          password=self.password,
                          )
         self.client.login(username=self.username, password=self.password)
-        
+
     def test_future_question(self):
         """
         The detail view of a question with a pub_date in the future
         returns 302.
         """
-        future_question = create_question(question_text="Future question.", days=5)
+        future_question = create_question(
+            question_text="Future question.", days=5)
         url = reverse("polls:detail", args=(future_question.id,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
@@ -102,7 +114,8 @@ class QuestionDetailViewTests(TestCase):
         The detail view of a question with a pub_date in the past
         displays the question's text.
         """
-        past_question = create_question(question_text="Past Question.", days=-5)
+        past_question = create_question(
+            question_text="Past Question.", days=-5)
         url = reverse("polls:detail", args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
