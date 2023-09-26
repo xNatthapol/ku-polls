@@ -84,7 +84,11 @@ def vote(request, question_id):
     """
     Handles voting for a particular choice in a question.
     """
-    question = get_object_or_404(Question, pk=question_id)
+    try:
+        question = get_object_or_404(Question, pk=question_id)
+    except Http404:
+        messages.error(request, "This question does not exist.")
+        return redirect("polls:index")
 
     if not question.can_vote():
         messages.error(request, "This question page not allow voting.")
